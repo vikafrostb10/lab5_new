@@ -1,7 +1,7 @@
 pipeline
 {
     environment {
-        registryCredential = 'DockerHub'
+        registryCredential = 'my_dockerhub'
         dockerImage = ''
     }
 	options
@@ -70,7 +70,7 @@ pipeline
                 echo "Application Publishing"
                 checkout scm
                 script {
-                    def customImage = docker.build("frost103/laba_5_new:${env.BUILD_ID}")
+                    def customImage = docker.build("frost103/lab5_lviv_bitch:${env.BUILD_ID}")
                     docker.withRegistry('',registryCredential )
                     {
                         customImage.push()}
